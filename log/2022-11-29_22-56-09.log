@@ -1,0 +1,56 @@
+Init service layer.
+Init dao layer.
+Controller- recv: account=2020211376, password=password
+____________Dao- Login check: 2020211376 password
+Controller- send: Login success!
+
+Controller- recv: 2020211376 123412414
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+________Service- This account has no state, start serve.
+________Service- User states: Start
+____________Dao- Get step for Start
+________Service- Current: Start
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+Controller- send: 主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+
+Controller- recv: 2020211376 21341234124
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+____________Dao- Get step for Welcome
+________Service- Current: Welcome
+________Service- User states: Mishandled
+____________Dao- Get step for Mishandled
+________Service- Add: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+Controller- send: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜&主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+
+Controller- recv: 2020211376 1234124124
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+____________Dao- Get step for Welcome
+________Service- Current: Welcome
+________Service- User states: Mishandled
+____________Dao- Get step for Mishandled
+________Service- Add: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+Controller- send: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜&主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+
+Controller- recv: 2020211376 2314324
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+____________Dao- Get step for Welcome
+________Service- Current: Welcome
+________Service- User states: Mishandled
+____________Dao- Get step for Mishandled
+________Service- Add: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）
+Controller- send: 主人˃̶͈ ˂̶͈ 我没听懂呜呜呜&主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）

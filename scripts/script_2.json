@@ -1,0 +1,68 @@
+{
+  "Steps": {
+    "Start" : {
+      "speak": "$name，有屁快放。",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Welcome" : {
+      "speak": "投诉、账单，还是滚蛋（退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Silence" : {
+      "speak": "墨迹什么？不吱声给老子滚（投诉、账单、退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Complain" : {
+      "speak": "快说你妈的",
+      "listen": 15,
+      "branch": {},
+      "silence": "Complain",
+      "default": "Reply"
+    },
+    "Reply" : {
+      "speak": "草，就这",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Bill" : {
+      "speak": "账单$amount，余额$balance。真他妈是个穷鬼",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Mishandled" : {
+      "speak": "别说老子听不懂的草",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Exit" : {
+      "speak": "滚别他妈让我再见到你",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "End"
+    }
+  }
+}

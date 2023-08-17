@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Service Page</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/service.css">
+    <script src="/static/js/jquery-3.6.1.min.js"></script>
+    <link rel="shortcut icon" href="/static/pics/02.jpg">
+</head>
+
+<body>
+<!--聊天框-->
+<div class="div1">
+    <!--聊天框头部-->
+    <div class="headDiv">客服：<script>document.write(staff)</script></div>
+
+    <!--聊天框中部-->
+    <div class="bodyDiv">
+        <div class="bodyDiv1L">
+            <div class="bodyDiv1leftL">MM</div>
+            <div class="bodyDiv1rightL">
+                <div class="time1DivL"><script>refresh();document.write(now)</script></div>
+                <div class="speak1DivL">你好！</div>
+            </div>
+        </div>
+        <div class="bodyDiv1L">
+            <div class="bodyDiv1leftL">MM</div>
+            <div class="bodyDiv1rightL">
+                <div class="time1DivL">
+                    <script>
+                        refresh()
+                        document.write(now)
+                    </script>
+                </div>
+                <div class="speak1DivL">这里是客服系统。</div>
+            </div>
+        </div>
+    </div>
+
+    <!--聊天框底部-->
+    <form action='http://localhost:9000/service' method="post" target="myIframe">
+        <div class="footDiv" >
+            <textarea  id="textarea" class="text" placeholder="请输入" cols="30" rows="10"></textarea>
+            <div class="sent" onclick="submit()" >发送</div>
+        </div>
+    </form>
+    <iframe style="display:none" id="myIframe" name="myIframe"></iframe>
+</div>
+</body>
+<script>
+    // 变量
+    var staff="TSR";    // 默认值
+    var account;
+    var name;
+    var now;
+    var timer_id = -1;
+    var symbol_devide = "&"
+    var symbol_overtime = "mtc_Overtime"
+
+    /*根据url获取参数*/
+    function GetArgsFromHref(sArgName) {
+        var args = window.location.search.split('?')[1].split('&');
+        /*循环查找参数*/
+        for (i = 0; i < args.length; i++) {
+            var k = args[i].split('=')[0]
+            if(k == sArgName) {
+                return args[i].split('=')[1]
+            }
+        }
+        return "NULL"
+    }
+
+    /*获取当前时间到now*/
+    function refresh() {
+        dt = new Date();
+        var h = dt.getHours(); //获取时
+        var m = dt.getMinutes(); //获取分
+        var s = dt.getSeconds(); //获取秒
+        now = h+":"+m+":"+s;
+    }
+
+    /*输入事件触发*/
+    window.onload = function() {
+        account=GetArgsFromHref("account")
+        console.log("Get recv account:", account)
+        name=decodeURI(GetArgsFromHref("name"))
+        console.log("Get recv name:", name)
+    }
+
+    /*输入事件触发*/
+    function submit() {
+        /*点击发送后清空输入框内容*/
+        var text = document.querySelector(".text").value //获得多行输入框内容的值
+        textput_me(text)
+        document.querySelector(".text").value= ""
+        console.log("Post send data:", text)
+
+        /*发送到服务端*/
+        send_to_server(text)
+    }
+
+    /*超时计时器触发*/
+    function overtime() {
+        console.log("Timer works")
+
+        /*发送到服务端*/
+        send_to_server(symbol_overtime)
+    }
+
+    /*发送到服务端*/
+    function send_to_server(text) {
+        /*清空计时器*/
+        clearTimeout(timer_id)
+
+        $.post({
+            url:"",
+            data:{
+                "account": account,
+                "text": text,
+            },
+            success:function (data, status) {
+                console.log("Post recv data:", data)
+                /*发送客服回复*/
+                var messages = data.msg.split(symbol_devide)
+                for(var i = 0 ; i < messages.length ; i++){
+                    textput_staff(messages[i])
+                }
+                /*设置定时器*/
+                var clock = 1000*(data.timer)
+                console.log("Set timer:", clock)
+                timer_id = setTimeout(function() {
+                    overtime()
+                }, clock)
+            }
+        })
+    }
+
+    /*我的发送数据到页面*/
+    function textput_me(input_text) {
+        /*得到bodyDiv1R(Div标签的bodyDiv1R属性) 的字符串格式*/
+        refresh()
+        var bodyDiv1R =
+            `<div class="bodyDiv1R">
+                <div class="bodyDiv1leftR">${name}</div>
+                <div class="bodyDiv1rightR">
+                    <div class="time1DivR">${now}</div>
+                    <div class="speak1DivR">${input_text}</div>
+                </div>
+            </div>`
+
+        /*拼接*/
+        var bodyDiv  = document.querySelector(".bodyDiv") /*先得到属性为bodyDiv的标签*/
+        bodyDiv.innerHTML = bodyDiv.innerHTML+bodyDiv1R /* bodyDiv.innerHTML表示属性为bodyDiv的标签的代码内容(以字符串返回)*/
+        /* 又因为bodyDiv1R也是字符串 所以上面代码表示在原有的内容上进行拼接*/
+
+        /*自动滚动到底部*/
+        bodyDiv.scrollTop = bodyDiv.scrollHeight
+    }
+
+    /*后端的发送数据到页面*/
+    function textput_staff(input_text) {
+        refresh()
+        /*得到bodyDiv1R(Div标签的bodyDiv1R属性) 的字符串格式*/
+        var bodyDiv1R =
+            `<div class="bodyDiv1L">
+                <div class="bodyDiv1leftL">${staff}</div>
+                <div class="bodyDiv1rightL">
+                    <div class="time1DivL">${now}</div>
+                    <div class="speak1DivL">${input_text}</div>
+                </div>
+            </div>`
+
+        /*拼接*/
+        var bodyDiv = document.querySelector(".bodyDiv") /*先得到属性为bodyDiv的标签*/
+        bodyDiv.innerHTML = bodyDiv.innerHTML+bodyDiv1R /* bodyDiv.innerHTML表示属性为bodyDiv的标签的代码内容(以字符串返回)*/
+        /* 又因为bodyDiv1R也是字符串 所以上面代码表示在原有的内容上进行拼接*/
+
+        /*自动滚动到底部*/
+        bodyDiv.scrollTop = bodyDiv.scrollHeight
+    }
+</script>
+</html>

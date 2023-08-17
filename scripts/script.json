@@ -1,0 +1,68 @@
+{
+  "Steps": {
+    "Start" : {
+      "speak": "您好，$name，我在。",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Welcome" : {
+      "speak": "您好，$name，请问有什么可以帮您？（投诉、账单、退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Silence" : {
+      "speak": "还在嘛？请问有什么可以帮您的嘛？（投诉、账单、退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Complain" : {
+      "speak": "请提出您宝贵的建议：",
+      "listen": 15,
+      "branch": {},
+      "silence": "Complain",
+      "default": "Reply"
+    },
+    "Reply" : {
+      "speak": "我们收到了，感谢！",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Bill" : {
+      "speak": "您好，您本月的账单是$amount，账户余额是$balance。",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Mishandled" : {
+      "speak": "我没听懂呜呜呜。",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Exit" : {
+      "speak": "感谢您的来电，再见",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "End"
+    }
+  }
+}

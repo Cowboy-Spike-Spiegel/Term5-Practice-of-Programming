@@ -1,0 +1,5 @@
+Init service layer.
+Init dao layer.
+Controller- recv: account=2020211376, password=password
+____________Dao- Login check: 2020211376 password
+Controller- send: Login success!

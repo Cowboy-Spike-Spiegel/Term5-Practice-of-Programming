@@ -1,0 +1,68 @@
+{
+  "Steps": {
+    "Start" : {
+      "speak": "$name，ฅ( ̳• · • ̳ฅ)主人想小妹了嘛~，小妹在的。",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Welcome" : {
+      "speak": "主人，有什么小妹可以帮您的呀ଘ(੭ˊ꒳​ˋ)੭ ？（投诉、账单、退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Silence" : {
+      "speak": "主人还在嘛？真的没有对小妹的吩咐了嘛？（投诉、账单、退出）",
+      "listen": 20,
+      "branch": {
+        "投诉": "Complain",
+        "账单": "Bill",
+        "退出": "Exit"
+      },
+      "silence": "Silence",
+      "default": "Mishandled"
+    },
+    "Complain" : {
+      "speak": "唔呀Q_Q，主人对小妹有什么不满意的地方嘛：",
+      "listen": 15,
+      "branch": {},
+      "silence": "Complain",
+      "default": "Reply"
+    },
+    "Reply" : {
+      "speak": "(ᕑᗢᓫ∗)˒小妹收到了，感谢！",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Bill" : {
+      "speak": "主人~，本月的账单是$amount！账户余额是$balance！",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Mishandled" : {
+      "speak": "主人˃̶͈ ˂̶͈ 我没听懂呜呜呜",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "Welcome"
+    },
+    "Exit" : {
+      "speak": "小妹走了ᕙ(`▿´)ᕗ主人一定要开开心心呀！",
+      "listen": 0,
+      "branch": {},
+      "silence": "",
+      "default": "End"
+    }
+  }
+}

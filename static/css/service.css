@@ -1,0 +1,134 @@
+/*聊天框*/
+.div1{
+    width: 1000px;
+    /* background-color: aliceblue; */
+    margin: auto;
+    border-style:solid ;
+    border-radius: 10px;
+}
+
+/*聊天框头部*/
+.headDiv{
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    font-style:normal;
+    border-style: solid;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+/*聊天框中部*/
+.bodyDiv{
+    height: 450px;
+    /* background-color: yellow; */
+    overflow: auto;/* 内容溢出时自动滚动 */
+}
+.bodyDiv1L{  /* 左边发送信息 */
+    height: 140px;
+    width: 100%;
+    /* background-color:aqua; */
+}
+.bodyDiv1leftL{ /*第一部分左边*/
+    height: 60px;
+    width: 60px;
+    background-color: rgb(240, 168, 168);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    color: white;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: left;
+}
+.bodyDiv1rightL{ /*第一部分右边*/
+    width: 60%;
+    height: 100px;
+    /* background-color:green;          */
+    float: left;
+    margin-top: 10px;
+}
+
+.speak1DivL{ /*第一部分聊天*/
+    background-color: rgb(240, 240, 168);
+    padding: 5px;
+    border-radius: 0 10px 10px 10px;
+    text-align: left;
+    line-height: 50px;
+    margin-top: 5px;
+}
+
+.bodyDiv1R{  /*右边发送信息 */
+    height: 140px;
+    width: 100%;
+    /* background-color:aqua; */
+}
+.bodyDiv1leftR{ /*第二部分左边*/
+    height: 60px;
+    width: 60px;
+    background-color: rgb(168, 168, 240);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    color: white;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    float: right;
+}
+.bodyDiv1rightR{ /*第二部分右边*/
+    width: 60%;
+    height: 100px;
+    /* background-color:green; */
+    float: right;
+    margin-top: 10px;
+    text-align: right; /*时间居右*/
+}
+
+.speak1DivR{ /*第二部分聊天*/
+    background-color: rgb(168, 240, 240);
+    padding: 5px;
+    border-radius: 10px 0 10px 10px;
+    text-align: left;
+    line-height: 50px;
+    margin-top: 5px;
+
+}
+
+/*聊天框底部*/
+.footDiv{
+    height: 150px;
+    width: 100%;
+    /* background-color: red; */
+    border-style: solid;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    position: relative;  /*position属性 */
+}
+.text{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.sent{
+    height: 40px;
+    width: 100px;
+    background-color: rgb(255, 100, 0);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+}

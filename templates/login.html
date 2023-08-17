@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+  <script src="/static/js/jquery-3.6.1.min.js"></script>
+  <link rel="shortcut icon" href="/static/pics/02.jpg">
+</head>
+<body>
+<a href="https://cowboy-spike-spiegel.github.io/">Click to Spike Spiegel's Blog</a>
+<div id="bigBox">
+  <h1>LOGIN</h1>
+  <div class="inputBox">
+    <div class="inputText">
+      <input type="text" placeholder="account" name="account" id="account"/>
+    </div>
+    <div class="inputText">
+      <input type="password" placeholder="password" name="password" id="password"/>
+    </div>
+    <input type="button" class="inputButton" value="LOGIN" onclick="login()"/>
+  </div>
+</div>
+<script>
+  function login() {
+    $.post({
+      url:"",
+      data:{
+        "account": document.getElementById("account").value,
+        "password": document.getElementById("password").value,
+      },
+      success:function (data, status) {
+        console.log(status)
+        console.log(data)
+        if(data.Identify="Login success") {
+          location.href = data.jumpTo+"?account=" + data.account + "&name=" + data.info
+        } else {
+          window.alert(data.info)
+        }
+      }
+    })
+  }
+</script>
+</body>
+</html>

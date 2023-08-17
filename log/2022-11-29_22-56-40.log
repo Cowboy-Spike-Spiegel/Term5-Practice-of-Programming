@@ -1,0 +1,43 @@
+Init service layer.
+Init dao layer.
+Controller- recv: account=2020211376, password=password
+____________Dao- Login check: 2020211376 password
+Controller- send: Login success!
+
+Controller- recv: 2020211376 32141
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+________Service- This account has no state, start serve.
+________Service- User states: Start
+____________Dao- Get step for Start
+________Service- Current: Start
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 投诉、账单，还是滚蛋（退出）
+Controller- send: 投诉、账单，还是滚蛋（退出）
+
+Controller- recv: 2020211376 1234124
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+____________Dao- Get step for Welcome
+________Service- Current: Welcome
+________Service- User states: Mishandled
+____________Dao- Get step for Mishandled
+________Service- Add: 别说老子听不懂的草
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 投诉、账单，还是滚蛋（退出）
+Controller- send: 别说老子听不懂的草&投诉、账单，还是滚蛋（退出）
+
+Controller- recv: 2020211376 qwerq
+____________Dao- Select name from users where account='2020211376'
+____________Dao- Query name:马天成
+____________Dao- Get step for Welcome
+________Service- Current: Welcome
+________Service- User states: Mishandled
+____________Dao- Get step for Mishandled
+________Service- Add: 别说老子听不懂的草
+________Service- User states: Welcome
+____________Dao- Get step for Welcome
+________Service- Add: 投诉、账单，还是滚蛋（退出）
+Controller- send: 别说老子听不懂的草&投诉、账单，还是滚蛋（退出）
